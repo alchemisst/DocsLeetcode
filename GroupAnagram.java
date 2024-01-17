@@ -1,5 +1,6 @@
-49. Group Anagrams ~medium
-// creater a
+// 49. Group Anagrams ~medium
+// create a map where keys will be sorted word and values will be list of words
+// return the answer after the checking if the key present in the map or not if yess add the word 
 
 
 import java.util.*;
