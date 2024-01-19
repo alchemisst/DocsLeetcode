@@ -1,3 +1,8 @@
+// 33. Search in Rotated Sorted Array ~medium
+// first find pivot index then check left or right array for the target
+// pivot is the index from where the array is rotated
+
+
 public class SearchInRoatatedArray {
     public static void main(String[] args) {
         int[] nums = {4,5,6,7,0,1,2};
@@ -6,9 +11,9 @@ public class SearchInRoatatedArray {
        
         
         if(target>=nums[pivot] && target<nums[nums.length-1]){
-            System.out.println("Index = "+ binarySearch(nums,pivot,nums.length-1,target));   
+            System.out.println("At Index = "+ binarySearch(nums,pivot,nums.length-1,target));   
         }
-        else{System.out.println("Index = "+ binarySearch(nums,0,pivot-1,target)); }
+        else{System.out.println("At Index = "+ binarySearch(nums,0,pivot-1,target)); }
        
             
             
