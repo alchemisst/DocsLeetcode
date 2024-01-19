@@ -1,26 +1,43 @@
+// 347. TopKFrequentElements ~medium
+// to solve it first map the key and frequency of elements 
+// create a list of array (buckets) of length of numslength then add the elements in the array of same freuency
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class TopKFrequentElements {
-    public static void main(String[] args) {
-        int[] nums = {1,1,1,2,2,2,3};
-        int k = 2;
-        System.out.println(topKFrequent(nums, k));
-    }
-    public static Map<Integer,List<Integer>> topKFrequent(int[] nums, int k) {
-        Map<Integer,List<Integer>> answerMap = new HashMap<>();
-        Map<Integer,Integer> frequencyMap= new HashMap<>();
-        for(int i = 0 ; i<nums.length ; i++){
-            answerMap.put(i,new ArrayList<>());
-            frequencyMap.put(nums[i],frequencyMap.getOrDefault(nums[i],0)+1);
-        }
-        for(int i:frequencyMap.keySet()){
-            answerMap.get(frequencyMap.get(i)).add(i);
 
-        }
-        
-        return answerMap;
+  public int[] topKFrequent(int[] nums, int k) {
+
+    List<Integer>[] bucket = new List[nums.length + 1];
+    Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+    for (int n : nums) {
+      frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
     }
+
+    for (int key : frequencyMap.keySet()) {
+      int frequency = frequencyMap.get(key);
+      if (bucket[frequency] == null) {
+        bucket[frequency] = new ArrayList<>();
+      }
+      bucket[frequency].add(key);
+    }
+
+    int[] res = new int[k];
+    int counter = 0;
+
+    for (int pos = bucket.length - 1; pos >= 0 && counter < k; pos--) {
+      if (bucket[pos] != null) {
+        for (Integer integer : bucket[pos]) {
+          res[counter++] = integer;
+        }
+      }
+    }
+    return res;
+  }
+
 }
