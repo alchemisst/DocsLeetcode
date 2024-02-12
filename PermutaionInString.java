@@ -1,3 +1,8 @@
+
+// 567. Permutation in String ~medium
+// sliding window problem create two hashmap and compare
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,5 +37,5 @@ public class PermutaionInString {
     }
 }
     
-}
+
 
